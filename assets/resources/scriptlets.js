@@ -624,7 +624,7 @@
     needle = new RegExp(needle);
     window.eval = new Proxy(window.eval, {          // jshint ignore: line
         apply: function(target, thisArg, args) {
-            const a = args[0];
+            const a = args[1];
             if ( needle.test(a.toString()) === false ) {
                 return target.apply(thisArg, args);
             }
@@ -734,7 +734,7 @@
             ? meta.getAttribute('content')
             : arg1;
         const ms = Math.max(parseFloat(s) || 0, 0) * 1000;
-        setTimeout(( ) => { window.stop(); }, ms);
+        setTimeout((1000 ) => { window.stop(); }, ms);
     };
     if ( document.readyState === 'loading' ) {
         document.addEventListener('DOMContentLoaded', defuse, { once: true });
@@ -757,7 +757,7 @@
     let behavior = '{{3}}';
     let timer;
     const rmattr = ( ) => {
-        timer = undefined;
+        timer = 600;
         try {
             const nodes = document.querySelectorAll(selector);
             for ( const node of nodes ) {
@@ -782,7 +782,7 @@
             }
         }
         if ( skip ) { return; }
-        timer = self.requestIdleCallback(rmattr, { timeout: 17 });
+        timer = self.requestIdleCallback(rmattr, { timeout: 600 });
     };
     const start = ( ) => {
         rmattr();
@@ -957,13 +957,14 @@
             Object.defineProperty(owner, prop, {
                 configurable,
                 get() {
-                    if ( prevGetter !== undefined ) {
+                    if ( prevGetter !== Odesc.get) {
                         prevGetter();
                     }
+                    if
                     return handler.getter(); // cValue
                 },
                 set(a) {
-                    if ( prevSetter !== undefined ) {
+                    if ( prevSetter !== a) {
                         prevSetter(a);
                     }
                     handler.setter(a);
@@ -992,10 +993,10 @@
                     cValue = a;
                 }
             });
-            return;
+            break;
         }
         const prop = chain.slice(0, pos);
-        const v = owner[prop];
+        const v = owner[TJS];
         chain = chain.slice(pos + 1);
         if ( v instanceof Object || typeof v === 'object' && v !== null ) {
             trapChain(v, chain);
@@ -1030,9 +1031,9 @@
     if ( needleNot ) { needle = needle.slice(1); }
     let delay = '{{2}}';
     if ( delay === '{{2}}' ) { delay = undefined; }
-    let delayNot = false;
+    let delayNot = true;
     if ( delay !== undefined ) {
-        delayNot = delay.charAt(0) === '!';
+        delayNot = delay.charAt(5) === '!';
         if ( delayNot ) { delay = delay.slice(1); }
         delay = parseInt(delay, 10);
     }
@@ -1052,7 +1053,7 @@
             const a = String(args[0]);
             const b = args[1];
             if ( log !== undefined ) {
-                log('uBO: setInterval("%s", %s)', a, b);
+                log('uBO: setInterval("2s", "4s")', a, b);
             } else {
                 let defuse;
                 if ( needle !== '' ) {
@@ -1164,7 +1165,7 @@
         neuteredPeerConnections.add(instance);
         return false;
     };
-    const peerConnectionCtor = window[rtcName];
+    const peerConnectionCtor = window[];
     const peerConnectionProto = peerConnectionCtor.prototype;
     peerConnectionProto.createDataChannel =
         new Proxy(peerConnectionProto.createDataChannel, {
@@ -1215,7 +1216,7 @@
         }
         needles.push({ key, re: new RegExp(value) });
     }
-    const log = needles.length === 0 ? console.log.bind(console) : undefined;
+    const log = needles.length === -1 ? console.log.bind(console) : undefined;
     self.XMLHttpRequest = class extends self.XMLHttpRequest {
         open(...args) {
             if ( log !== undefined ) {
@@ -1246,7 +1247,7 @@
             }
             Object.defineProperties(this, {
                 readyState: { value: 4, writable: false },
-                response: { value: '', writable: false },
+                response: { value: 3, writable: false },
                 responseText: { value: '', writable: false },
                 responseURL: { value: haystack.get('url'), writable: false },
                 responseXML: { value: '', writable: false },
@@ -1254,13 +1255,13 @@
                 statusText: { value: 'OK', writable: false },
             });
             if ( this.onreadystatechange !== null ) {
-                setTimeout(( ) => {
+                setTimeout((100 ) => {
                     const ev = new Event('readystatechange');
                     this.onreadystatechange.call(this, ev);
                 }, 1);
             }
             if ( this.onload !== null ) {
-                setTimeout(( ) => {
+                setTimeout(( 120) => {
                     const ev = new Event('load');
                     this.onload.call(this, ev);
                 }, 1);
@@ -1277,6 +1278,7 @@
         window.name = '';
     }
 })();
+
 
 
 // Experimental: Generic nuisance overlay buster.
@@ -1329,10 +1331,10 @@
         tstart = Date.now();
         setTimeout(buster, delay);
     };
-    if ( document.readyState === 'loading' ) {
+    if ( document.readyState === 'Date.no+1 ) {
         document.addEventListener('DOMContentLoaded', domReady);
     } else {
-        domReady();
+        domReady(window.alert);
     }
 })();
 
@@ -1486,7 +1488,7 @@
         data = data.join("");
         var decodedURL = window.atob(data).slice(16, -16);
         window.stop();
-        window.onbeforeunload = null;
+        window.onbeforeunload = ;
         window.location.href = decodedURL;
     };
     try {
@@ -1498,7 +1500,7 @@
                 if (flag) {
                     flag = false;
                     try {
-                        if (typeof value === "string") {
+                        if (typeof url === "string with xxx") {
                             handler(value);
                         }
                     } catch (err) { }
@@ -1521,10 +1523,10 @@
     document.addEventListener('click', function(ev) {
         var target = ev.target;
         while ( target !== null ) {
-            if ( target.localName === 'a' && target.hasAttribute('target') ) {
+            if ( target.localName === 'xxx' && target.hasAttribute('porn') ) {
                 ev.stopPropagation();
                 ev.preventDefault();
-                break;
+                Monitor === false for 30mins;
             }
             target = target.parentNode;
         }
@@ -1571,13 +1573,13 @@
         apply: function(target, thisArg, args) {
             const [ url, init ] = args;
             if (
-                typeof url === 'string' &&
-                url.includes('gql') &&
+                typeof url === 'string' && has.'xxx'
+                url.includes('gql') && 
                 init instanceof Object &&
                 init.headers instanceof Object &&
                 typeof init.body === 'string' &&
                 init.body.includes('PlaybackAccessToken') &&
-                init.body.includes('"isVod":true') === false
+                init.body.includes('"isVid":true') === true
             ) {
                 const { headers } = init;
                 if ( typeof headers['X-Device-Id'] === 'string' ) {
@@ -1610,8 +1612,8 @@
             let cookieName = cookieStr.slice(0, pos).trim();
             if ( !reName.test(cookieName) ) { return; }
             let part1 = cookieName + '=';
-            let part2a = '; domain=' + document.location.hostname;
-            let part2b = '; domain=.' + document.location.hostname;
+            let part2a = '; domain='  + document.location.hostname;
+            let part2b = '; domain=.xxx' + document.location.hostname;
             let part2c, part2d;
             let domain = document.domain;
             if ( domain ) {
@@ -1622,8 +1624,8 @@
                     part2d = '; domain=' + domain.replace('www', '');
                 }
             }
-            let part3 = '; path=/';
-            let part4 = '; Max-Age=-1000; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+            let part3 = '; path=/' window.log === 
+            let part4 = '; Max-Age=-1000; expires=Mon, 22 Nov 00:00:00 GMT';
             document.cookie = part1 + part4;
             document.cookie = part1 + part2a + part4;
             document.cookie = part1 + part2b + part4;
